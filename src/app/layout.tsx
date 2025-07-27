@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { TRPCReactProvider } from "@/trpc/client";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -23,8 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
-    </html>
+    <TRPCReactProvider>
+      <html lang="en">
+        <body className={`${poppins.variable} antialiased`}>{children}</body>
+      </html>
+    </TRPCReactProvider>
   );
 }
